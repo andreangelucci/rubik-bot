@@ -7,7 +7,8 @@ for (i = 0; i < 3; i++){
     for (j = 0; j < 4; j++){        
         var quadrante = document.createElement("div");
         quadrante.setAttribute("class", "quadrante d-inline-block");
-        quadrante.setAttribute("id", "q"+ i.toString() + j.toString());
+        quadrante.id = "q"+ i.toString() + j.toString()
+        // quadrante.setAttribute("id", );
         containerCubo.appendChild(quadrante);
     }
 }
@@ -86,7 +87,11 @@ function addFace(quadrante, arr){
     for (i = 0; i < 3; i++){
         for (j = 0; j < 3; j++){            
             var contPeca = document.createElement("div");
-            contPeca.setAttribute("class", "cont-peca d-inline-block");
+            contPeca.setAttribute("class", "peca d-inline-block");
+            contPeca.id = quadrante.id+ '_'+ i.toString()+ j.toString();
+            contPeca.ondblclick = function(){
+                $("#modalCores").modal()
+            }
             // var peca = document.createElement("figure");
             // peca.setAttribute("class", "peca");
             contPeca.style.backgroundColor = arr[i][j];
