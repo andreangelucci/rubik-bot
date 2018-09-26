@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Rubik's Bot</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/blood.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-image="./resource/cubo.gif">
+                    <h3>Robótica aplicada na solução do Cubo Mágico</h3>
+                    <p><small>André Angeluci - Engenharia de Computação</small></p>
+                </section>
+                <section>
+                    <section
+                        data-background-image="./resource/erno.jpeg"
+                        data-state="transparente"
+                    >
+                        <h3>O Cubo de Rubik</h3>
+                        <small>História e funcionamento do quebra-cabeça mais popular do mundo</small>
+                        <p><small class="fragment">                                
+                            <b>43.252.003.274.489.856.000 de posições possíveis</b>
+                        </small></p>
+                    </section
+                        data-background-image="./resource/erno.jpeg"
+                        data-state="transparente"
+                    >
+                    <section
+                        data-background-image="./resource/educacao.jpg"
+                        data-state="transparente"
+                    >
+                        <h3>Contribuição dos jogos na cognição humana</h3>
+                        <small>Vantagens no uso de recursos lúdicos no ensino</small>                        
+                    </section>
+                    <section
+                        data-background-image="./resource/cubo.jpeg"
+                        data-state="transparente"    
+                    >
+                        <h3>O projeto</h3>
+                        <small>Desenvolvimento do Rubik's Bot</small>
+                    </section>                    
+                    <section
+                        data-background-image="./resource/opencv.png"
+                        data-state="transparente"
+                    >
+                        <h3>Processamento de imagens</h3>
+                        <small>Fundamentos e aplicação no projeto com Python e OpenCV</small>
+                    </section>
+                    <section
+                        data-background-image="./resource/cubo.jpg"
+                        data-state="transparente"
+                    >
+                        <h3>Algoritmo de solução</h3>
+                        <small>Abstração computacional do cubo e implementação do algoritmo de Kociemba</small>
+                    </section>
+                </section>
+                <section><h2>Demonstração</h2></section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+    </body>
+</html>

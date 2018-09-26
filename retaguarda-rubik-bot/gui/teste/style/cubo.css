@@ -1,0 +1,22 @@
+.container-cubo{    
+    width: 400px;
+    height: 300px;
+}
+
+.quadrante{
+    width: 25%;
+    height: 33.33%;
+}
+
+.cont-peca{
+    width: calc(33.33% - 7px);
+    height: calc(33.33% - 7px);
+    padding: 2.5px; 
+    align-content: center;
+}
+.peca{
+    border-radius: 20%; 
+    border: 2px solid black;
+    width: 100%;
+    height: 100%;
+}

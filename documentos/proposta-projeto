@@ -1,0 +1,11 @@
+Descrição:
+Robô que resolve cubo mágico.
+
+Objetivos:
+1. Desenvolver um mecanismo capaz de capturar imagens de um cubo mágico;
+2. Implementar algoritmo capaz de analisar o posicionamento as peças do cubo através das imagens capturadas e achar sua melhor solução.
+3. Movimentar as peças do cubo para resolvê-lo.
+
+Justificativa:
+Aplicar em um projeto conhecimentos relacionados à robótica, cálculos matemáticos e desenvolvimento de software.
+

@@ -1,0 +1,26 @@
+{
+  "name": "retaguarda-rubik-bot",
+  "version": "1.0.0",
+  "description": "Sistema retaguarda ao robo de solucao do Cubo de Rubik (RUBIK'S B0T).",
+  "main": "index.js",
+  "scripts": {
+    "electron-rebuild": "electron-rebuild -w opencv4nodejs",
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rubik",
+    "rubiks-cube",
+    "bot"
+  ],
+  "author": "Andre Angeluci",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^2.0.9",
+    "electron-rebuild": "^1.8.2",
+    "opencv4nodejs": "^4.8.0",
+    "python-shell": "^1.0.4",
+    "sweetalert": "^2.1.0",
+    "webcamjs": "^1.0.25"
+  }
+}
