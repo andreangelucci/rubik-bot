@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="./style/index.css">
     <link rel="stylesheet" href="./style/cubo.css">    
     <script src="linker/teste.js"></script>   
+    <script>
+      function selecionaPeca(){
+        $("#xxx").addClass('peca-escolher2')
+      }
+    </script>
     <title>RUBIT B0T</title>
   </head>
   <body onkeydown="keyDown(event)">
@@ -33,6 +38,39 @@
         <div class="col">
           <!-- Espaco para o preview do cubo -->
           <div id='preview-cubo' class="container-fluid position-absolute"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalCores" tabindex="-1" role="dialog" aria-labelledby="labelTitulo" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="labelTitulo">Escolha a cor da peça:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="cores-escolher">
+              <div class="row">
+                <div class="col-2">
+                    <div class="peca-escolher d-inline-block" id="xxx" style="background-color: red" onclick="selecionaPeca()"></div>                    
+                </div>                
+                <div class="col-2">
+                    <div class="peca-escolher d-inline-block" style="background-color: orange"></div>
+                </div>
+                <div class="peca-escolher d-inline-block" style="background-color: green"></div>
+                <div class="peca-escolher d-inline-block" style="background-color: blue"></div>
+                <div class="peca-escolher d-inline-block" style="background-color: white"></div>
+                <div class="peca-escolher d-inline-block" style="background-color: yellow"></div>              
+              </div>              
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary">Gravar</button>
+          </div>
         </div>
       </div>
     </div>
