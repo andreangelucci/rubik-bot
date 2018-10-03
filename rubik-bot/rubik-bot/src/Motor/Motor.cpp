@@ -30,9 +30,11 @@ void Motor::girar(Sentido s, int voltas){
     int passos = voltas * 50;
     for (int x = 0; x < passos; x++){
       digitalWrite(PIN_PASSOS, HIGH);
-      delay(1.25);
+    //   delay(1.25);
+      delay(3.25);
       digitalWrite(PIN_PASSOS, LOW);
-      delay(1.25);
+      delay(3.25);
+    //   delay(1.25);
     }
     _setHabilitado(false);
 }

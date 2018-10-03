@@ -2,19 +2,19 @@
 #include <Motor/Motor.h>
 #include <BLE/BleServer.h>
 
-#define PIN_ENABLED_M1 22
-#define PIN_ENABLED_M2 23
+// #define PIN_ENABLED_M1 22
+// #define PIN_ENABLED_M2 23
 
-Motor m1(PIN_ENABLED_M1);
-Motor m2(PIN_ENABLED_M2);
+// Motor m1(PIN_ENABLED_M1);
+// Motor m2(PIN_ENABLED_M2);
 
 void onBLEMsg(int i){
     //nova mensagem recebida via BLE
-    if (i == 1){
-        m1.girar(horario, 1);
-    } else {
-        m2.girar(horario, 2);
-    }
+    // if (i == 1){
+    //     m1.girar(horario, 1);
+    // } else {
+    //     m2.girar(horario, 2);
+    // }
 }
 
 void (*ptr)(int i) = &onBLEMsg;
