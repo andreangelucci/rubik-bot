@@ -5,7 +5,7 @@
     border-radius: 10px;
 }
 
-#canvasSnapshot {
+#canvasSnapshot, #canvasPeca {
     display: none;
 }
 
