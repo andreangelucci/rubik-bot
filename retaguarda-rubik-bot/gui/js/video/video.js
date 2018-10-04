@@ -12,7 +12,7 @@ var watsonRecognition = new VisualRecognitionV3({
   iam_apikey: 'MKUJInbtHNYUvnVqi8tVHSDatBL0fUwT12NK46PeAmvw'
 });
 
-function detectarCor(imgPath){    
+function detectarCor(imgPath, callback){    
     var img = fs.createReadStream(imgPath);
     var classificador = ["DefaultCustomModel_527294892"];
     var porcentagem_minima = 0.6;
@@ -26,10 +26,13 @@ function detectarCor(imgPath){
       parametros, function(err, response){
         if (err)
           console.log(err)
-        else
+        else {
           // console.log(response.images[0].image+ ': '+ response.images[0].classifiers[0].classes[0].class)
-          console.log(JSON.stringify(response, null, 2));
+          callback(response)
+          // console.log(JSON.stringify(response, null, 2));
+          // callback('oi');
         }
+      }
     )
 }
 
@@ -81,7 +84,22 @@ function capturaImagens(){
     // detectarCor('./imgs-cubo/p'+ i+ '.png');    
   }  
   //tenta zipar as imagens chamando o comando no terminal...
-  detectarCor('./imgs-cubo/teste.zip');
+  
+  var pathArqZipado = require('path').join(__dirname, './imgs-cubo');
+  var arqZipado = require('path').join(pathArqZipado, 'face_cubo.zip')
+  require('./linker/zip_arquivos.js').ziparImagens(
+    pathArqZipado, arqZipado, function(){
+      //zipou com sucesso, envia ao watson
+      detectarCor(arqZipado, function(json){
+        console.log(json)
+      })
+    }
+  )
+
+  // detectarCor(
+  //   '', function(str){
+  //     console.log(str);
+  //   });
 }
 
 function keyDown(btn){
