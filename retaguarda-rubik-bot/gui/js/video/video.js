@@ -4,6 +4,34 @@ const canvasMarcacoes = document.getElementById('canvasMarcacoes')
 const canvasSnapshot = document.getElementById('canvasSnapshot')
 const canvasPeca = document.getElementById('canvasPeca')
 const ctx = canvasMarcacoes.getContext("2d");
+var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
+
+var watsonRecognition = new VisualRecognitionV3({
+  url: 'https://gateway.watsonplatform.net/visual-recognition/api',
+  version: '2018-03-19',
+  iam_apikey: 'MKUJInbtHNYUvnVqi8tVHSDatBL0fUwT12NK46PeAmvw'
+});
+
+function detectarCor(imgPath){    
+    var img = fs.createReadStream(imgPath);
+    var classificador = ["DefaultCustomModel_527294892"];
+    var porcentagem_minima = 0.6;
+    var parametros = {
+      images_file: img,
+      classifier_ids: classificador,
+      threshold: porcentagem_minima
+    };
+    console.log(imgPath);
+    watsonRecognition.classify(
+      parametros, function(err, response){
+        if (err)
+          console.log(err)
+        else
+          // console.log(response.images[0].image+ ': '+ response.images[0].classifiers[0].classes[0].class)
+          console.log(JSON.stringify(response, null, 2));
+        }
+    )
+}
 
 //vetores x,y com a posicao de cada peca
 //width: 50 heigth: 50
@@ -50,7 +78,10 @@ function capturaImagens(){
     fs.writeFile('./imgs-cubo/p'+ i+ '.png', imgBuffer, function(err){
       console.log('Falha ao salvar imagem: '+err)
     })
+    // detectarCor('./imgs-cubo/p'+ i+ '.png');    
   }  
+  //tenta zipar as imagens chamando o comando no terminal...
+  detectarCor('./imgs-cubo/teste.zip');
 }
 
 function keyDown(btn){

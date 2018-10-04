@@ -18,9 +18,12 @@
   "devDependencies": {
     "electron": "^2.0.9",
     "electron-rebuild": "^1.8.2",
-    "opencv4nodejs": "^4.8.0", 
+    "opencv4nodejs": "^4.8.0",
     "python-shell": "^1.0.4",
     "sweetalert": "^2.1.0",
     "webcamjs": "^1.0.25"
+  },
+  "dependencies": {
+    "watson-developer-cloud": "^3.11.1"
   }
 }
