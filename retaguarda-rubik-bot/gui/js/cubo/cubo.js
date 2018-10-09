@@ -100,3 +100,9 @@ function addFace(quadrante, arr){
         }
     }
 }
+
+testevariavel = 'oi, blza?'
+
+exports.testeVar = function(){
+    console.log(testevariavel)
+}

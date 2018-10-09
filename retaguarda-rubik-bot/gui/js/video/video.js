@@ -21,7 +21,6 @@ function detectarCor(imgPath, callback){
       classifier_ids: classificador,
       threshold: porcentagem_minima
     };
-    console.log(imgPath);
     watsonRecognition.classify(
       parametros, function(err, response){
         if (err)
@@ -85,13 +84,37 @@ function capturaImagens(){
   }  
   //tenta zipar as imagens chamando o comando no terminal...
   
-  var pathArqZipado = require('path').join(__dirname, './imgs-cubo');
-  var arqZipado = require('path').join(pathArqZipado, 'face_cubo.zip')
+  var arqZipado = require('path').join(__dirname, './imgs-cubo/face_cubo.zip');
   require('./linker/zip_arquivos.js').ziparImagens(
-    pathArqZipado, arqZipado, function(){
+    arqZipado, function(){
       //zipou com sucesso, envia ao watson
-      detectarCor(arqZipado, function(json){
-        console.log(json)
+      detectarCor(arqZipado, function(analise){
+        //cores detectadas, trabalha a resposta
+        const classificadorCores = 'DefaultCustomModel_527294892'
+        analise.images.forEach(img => {
+          var cor = ''
+          var taxa = 0
+          var idx = /p(\d)\./.exec(img.image)
+          if (idx.length > 0){
+            idx = idx[1]
+            img.classifiers.forEach(classe => {
+              if (classe.classifier_id == classificadorCores){
+                cor = 'indefinido'
+                taxa = 0
+                //pega a cor com a taxa maior de probabilidade
+                classe.classes.forEach(classeCor => {
+                  if (classeCor.score > taxa){
+                    taxa = classeCor.score
+                    cor = classeCor.class
+                  }
+                })
+              }
+            })
+            //alimentar matriz com as cores aqui
+            testevariavel = 'indice '+ idx+ ' cor: '+ cor
+            require('./js/cubo/cubo.js').testeVar()
+          }          
+        })
       })
     }
   )
