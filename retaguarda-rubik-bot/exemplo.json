@@ -1,0 +1,141 @@
+{
+  "images": [
+    {
+      "classifiers": [
+        {
+          "classifier_id": "DefaultCustomModel_527294892",
+          "name": "Default Custom Model",
+          "classes": [
+            {
+              "class": "azul",
+              "score": 0.911
+            }
+          ]
+        }
+      ],
+      "image": "face_cubo.zip/p5.png"
+    },
+    {
+      "classifiers": [
+        {
+          "classifier_id": "DefaultCustomModel_527294892",
+          "name": "Default Custom Model",
+          "classes": [
+            {
+              "class": "verde",
+              "score": 0.91
+            }
+          ]
+        }
+      ],
+      "image": "face_cubo.zip/p8.png"
+    },
+    {
+      "classifiers": [
+        {
+          "classifier_id": "DefaultCustomModel_527294892",
+          "name": "Default Custom Model",
+          "classes": [
+            {
+              "class": "amarelo",
+              "score": 0.895
+            }
+          ]
+        }
+      ],
+      "image": "face_cubo.zip/p3.png"
+    },
+    {
+      "classifiers": [
+        {
+          "classifier_id": "DefaultCustomModel_527294892",
+          "name": "Default Custom Model",
+          "classes": [
+            {
+              "class": "azul",
+              "score": 0.909
+            }
+          ]
+        }
+      ],
+      "image": "face_cubo.zip/p2.png"
+    },
+    {
+      "classifiers": [
+        {
+          "classifier_id": "DefaultCustomModel_527294892",
+          "name": "Default Custom Model",
+          "classes": [
+            {
+              "class": "laranja",
+              "score": 0.909
+            }
+          ]
+        }
+      ],
+      "image": "face_cubo.zip/p6.png"
+    },
+    {
+      "classifiers": [
+        {
+          "classifier_id": "DefaultCustomModel_527294892",
+          "name": "Default Custom Model",
+          "classes": [
+            {
+              "class": "branco",
+              "score": 0.89
+            }
+          ]
+        }
+      ],
+      "image": "face_cubo.zip/p0.png"
+    },
+    {
+      "classifiers": [
+        {
+          "classifier_id": "DefaultCustomModel_527294892",
+          "name": "Default Custom Model",
+          "classes": [
+            {
+              "class": "azul",
+              "score": 0.91
+            }
+          ]
+        }
+      ],
+      "image": "face_cubo.zip/p1.png"
+    },
+    {
+      "classifiers": [
+        {
+          "classifier_id": "DefaultCustomModel_527294892",
+          "name": "Default Custom Model",
+          "classes": [
+            {
+              "class": "branco",
+              "score": 0.908
+            }
+          ]
+        }
+      ],
+      "image": "face_cubo.zip/p4.png"
+    },
+    {
+      "classifiers": [
+        {
+          "classifier_id": "DefaultCustomModel_527294892",
+          "name": "Default Custom Model",
+          "classes": [
+            {
+              "class": "branco",
+              "score": 0.862
+            }
+          ]
+        }
+      ],
+      "image": "face_cubo.zip/p7.png"
+    }
+  ],
+  "images_processed": 9,
+  "custom_classes": 6
+}

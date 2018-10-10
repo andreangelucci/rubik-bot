@@ -9,8 +9,8 @@ const {app, BrowserWindow} = require('electron')
     win = new BrowserWindow({width: 1000, height: 650})
   
     // e carrega index.html do app.
-    win.loadFile('index.html')
-  
+    win.loadFile('index.html')        
+      
     // Open the DevTools.
     win.webContents.openDevTools()
   

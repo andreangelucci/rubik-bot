@@ -21,12 +21,29 @@ var faceDireita = document.getElementById("q12");
 var faceCosta = document.getElementById("q13");
 var faceInferior = document.getElementById("q21");
 
-const vermelho = 'red'
-const laranja = 'orange'
-const verde = 'green'
-const azul = 'blue'
-const branco = 'white'
-const amarelo = 'yellow'
+function atualizaQuadrante(quadrante, arr){
+    //atualiza as pecas de um quadrante
+    var peca
+    for (i = 0; i < 3; i++){
+        for (j = 0; j < 3; j++){            
+            peca = document.querySelector(
+                '#'+quadrante.id+ '_'+ i.toString()+ j.toString()
+            )
+            peca.style.backgroundColor = arr[i][j];
+        }
+    }
+}
+
+function gerarRepresentacaoCubo(){
+    //gera a representacao do cubo baseado na variavel global
+    //representacaoCubo
+    atualizaQuadrante(faceFrente, representacaoCubo[0])
+    atualizaQuadrante(faceDireita, representacaoCubo[1])
+    atualizaQuadrante(faceCosta, representacaoCubo[2])
+    atualizaQuadrante(faceEsquerda, representacaoCubo[3])
+    atualizaQuadrante(faceSuperior, representacaoCubo[4])
+    atualizaQuadrante(faceInferior, representacaoCubo[5])
+}
 
 addFace(
     faceEsquerda,
@@ -101,8 +118,4 @@ function addFace(quadrante, arr){
     }
 }
 
-testevariavel = 'oi, blza?'
-
-exports.testeVar = function(){
-    console.log(testevariavel)
-}
+gerarRepresentacaoCubo()

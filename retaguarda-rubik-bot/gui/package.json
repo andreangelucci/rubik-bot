@@ -2,7 +2,7 @@
   "name": "retaguarda-rubik-bot",
   "version": "1.0.0",
   "description": "Sistema retaguarda ao robo de solucao do Cubo de Rubik (RUBIK'S B0T).",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "electron-rebuild": "electron-rebuild -w opencv4nodejs",
     "start": "electron .",
