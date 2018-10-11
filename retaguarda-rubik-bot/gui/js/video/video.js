@@ -69,7 +69,7 @@ module.exports.capturaImagens = function(){
             idx = idx[1]
             img.classifiers.forEach(classe => {
               if (classe.classifier_id == classificadorCores){
-                cor = 'indefinido'
+                cor = indefinido
                 taxa = 0
                 //pega a cor com a taxa maior de probabilidade
                 classe.classes.forEach(classeCor => {
@@ -81,11 +81,14 @@ module.exports.capturaImagens = function(){
               }
             })
             //alimentar matriz com as cores aqui
-            representacaoCubo[0][idx] = strToCor(cor)
-            //testevariavel = 'indice '+ idx+ ' cor: '+ cor
-          }
-          gerarRepresentacaoCubo()
+            auxX = idx % 3
+            auxY = idx/3|0
+            console.log(auxX + ' -> '+ auxY)    
+            representacaoCubo[faceSelecionada][auxX][auxY] = strToCor(cor)
+          }          
         })
+        Cubo.gerarRepresentacaoCubo()
+        SelecionarProximaFace();
       })
     }
   )

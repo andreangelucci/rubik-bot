@@ -6,7 +6,7 @@ const verde = 'green'
 const azul = 'blue'
 const branco = 'white'
 const amarelo = 'yellow'
-const indefinido = 'blue'
+const indefinido = 'gray'
 
 function strToCor(corWatson){
     switch (corWatson){
@@ -26,8 +26,20 @@ Face = {
     direita: 1,
     costas: 2,
     esquerda: 3,
-    cima: 4, 
-    baixo: 5
+    superior: 4, 
+    inferior: 5
+}
+
+var faceSelecionada = Face.frente
+
+function SelecionarProximaFace(){
+    SetFaceSelecionada((faceSelecionada == 5 ? 0 : faceSelecionada + 1))
+}
+
+function SetFaceSelecionada(face){
+    Cubo.realcarFaceSelecionada(false)
+    faceSelecionada = face
+    Cubo.realcarFaceSelecionada(true)
 }
 
 const representacaoCubo = [
@@ -79,9 +91,9 @@ function retornaArrayCubo(face){
             return representacaoCubo[2]
         case Face.esquerda:
             return representacaoCubo[3]
-        case Face.cima:
+        case Face.superior:
             return representacaoCubo[4]
-        case Face.baixo:
+        case Face.inferior:
             return representacaoCubo[5]
         default:
             throw 'Face do cubo invalida.'
