@@ -83,7 +83,6 @@ module.exports.capturaImagens = function(){
             //alimentar matriz com as cores aqui
             auxX = idx % 3
             auxY = idx/3|0
-            console.log(auxX + ' -> '+ auxY)    
             representacaoCubo[faceSelecionada][auxX][auxY] = strToCor(cor)
           }          
         })

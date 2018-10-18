@@ -1,5 +1,3 @@
-console.log('cu')
-
 const vermelho = 'red'
 const laranja = 'orange'
 const verde = 'green'
