@@ -3,7 +3,7 @@ const VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v
 const watsonRecognition = new VisualRecognitionV3({
   url: 'https://gateway.watsonplatform.net/visual-recognition/api',
   version: '2018-03-19',
-  iam_apikey: 'MKUJInbtHNYUvnVqi8tVHSDatBL0fUwT12NK46PeAmvw'
+  iam_apikey: process.env.WATSON_API_KEY
 });
 
 module.exports.detectarCor = function(imgPath, classificador, callback){    

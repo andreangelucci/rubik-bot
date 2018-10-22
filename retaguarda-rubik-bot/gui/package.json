@@ -24,6 +24,7 @@
     "webcamjs": "^1.0.25"
   },
   "dependencies": {
+    "dotenv": "^6.1.0",
     "watson-developer-cloud": "^3.11.1"
   }
 }
