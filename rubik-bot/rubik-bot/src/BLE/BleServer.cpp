@@ -6,11 +6,13 @@
 #define CHARACTERISTIC_UUID_RX "4ac8a682-9736-4e5d-932b-e9b31405049c"
 #define CHARACTERISTIC_UUID_TX "0972EF8C-7613-4075-AD52-756F33D4DA91"
 
-#define PIN_ENABLED_M1 22
-#define PIN_ENABLED_M2 23
+#define PIN_ENABLED_M1 15
+#define PIN_ENABLED_M2 22
+#define PIN_ENABLED_M3 23
 
 Motor m1(PIN_ENABLED_M1);
 Motor m2(PIN_ENABLED_M2);
+Motor m3(PIN_ENABLED_M3);
 
 class ServerCallbacks:
     public BLEServerCallbacks {
@@ -37,10 +39,15 @@ class CharacteristicCallbacks:
                 }   
             }
             if (rxValue.find("1")){
+                Serial.println("Motor 1..d");
                 m1.girar(horario, 2);
-            } else {
-                m2.girar(horario, 2);
-            }
+            } else
+                if (rxValue.find("2"))                
+                    m2.girar(horario, 2);
+                else
+                    if (rxValue.find("3"))
+                        m3.girar(horario, 1);
+            
         }
 };
 

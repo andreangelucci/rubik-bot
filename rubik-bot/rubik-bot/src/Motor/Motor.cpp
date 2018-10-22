@@ -1,5 +1,8 @@
 #include <Arduino.h>
 #include <Motor/Motor.h>
+#include <constantes.h>
+
+using namespace constantes;
 
 Motor::Motor(int pin){
     _pinEnabled = pin;    

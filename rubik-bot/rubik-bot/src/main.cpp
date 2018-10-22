@@ -1,34 +1,41 @@
+//pio run && pio run --target upload --upload-port /dev/ttyUSB0 && pio device monitor
 #include <Arduino.h>
 #include <Motor/Motor.h>
-#include <BLE/BleServer.h>
+#include <Motor/ControladorMotores.h>
+#include <constantes.h>
 
-// #define PIN_ENABLED_M1 22
-// #define PIN_ENABLED_M2 23
+using namespace constantes;
 
-// Motor m1(PIN_ENABLED_M1);
-// Motor m2(PIN_ENABLED_M2);
+bool _trabalhando;
+ControladorMotor controlador;
 
-void onBLEMsg(int i){
-    //nova mensagem recebida via BLE
-    // if (i == 1){
-    //     m1.girar(horario, 1);
-    // } else {
-    //     m2.girar(horario, 2);
-    // }
+void setTrabalhando(bool value){    
+    _trabalhando = value;
+    digitalWrite(PIN_ONBOARD_LED, 
+        (_trabalhando) ? HIGH : LOW
+    );
 }
-
-void (*ptr)(int i) = &onBLEMsg;
-BLE ble(*ptr);
 
 void setup() {
     // put your setup code here, to run once:
-    Serial.begin(9600);        
-    ble.iniciarServidor();
-    pinMode(PIN_DIRECAO, OUTPUT);
-    pinMode(PIN_PASSOS, OUTPUT);
+    Serial.begin(9600);   
+    pinMode(PIN_ONBOARD_LED, OUTPUT);
+    controlador = ControladorMotor();
 }
 
 void loop() {
+    if (Serial.available()){
+        //recebe a sequencia de movimento dos motores atravez
+        //da porta serial
+        if (!_trabalhando){
+            setTrabalhando(true);
+            char msg = Serial.read();
+            controlador.executarMovimentos(msg);
+            setTrabalhando(false);
+        } else {
+            Serial.println("Espera, to trabalhando...");
+        }
+    }
     // Serial.println("Uma volta horario");
     // m1.girar(horario, 2);
     // delay(1000);

@@ -3,9 +3,6 @@
 
 enum Sentido {horario, antihorario};
 
-#define PIN_DIRECAO 19
-#define PIN_PASSOS 18
-
 class Motor
 {
   public:
