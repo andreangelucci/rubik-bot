@@ -16,7 +16,7 @@
 }
 
 .page-header {
-    background-color: black;
+    background-color: #343640;
     color: white;        
     height: 100px;
 }
@@ -41,9 +41,22 @@ footer {
     height: 80px;
 }
 
-#btnConfirma {
+.botao:hover {
+    background-color: #4d8450;
+}
+
+.botao {
+    background-color: #3d5144;
+    color: white;
     width: 150px;
-    height: 50px;
-    left: 800px;
+    height: 40px;    
     top: 15px;
+}
+
+#btnLimpar {
+    margin-left: 600px;
+}
+
+#btnConfirmar {
+    margin-left: 800px;
 }

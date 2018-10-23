@@ -1,3 +1,5 @@
+const swal = require('sweetalert');
+
 const vermelho = 'red'
 const laranja = 'orange'
 const verde = 'green'
@@ -103,3 +105,13 @@ function defineFace(face, arr){
     retornaArrayCubo(face) = arr
 }
 
+function mostrarErro(err){
+    swal({
+        title: 'ops...',
+        text: err,
+        icon: 'error',
+        buttons: [{
+            text: 'Ok'
+        }]
+    });
+}
