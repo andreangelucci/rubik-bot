@@ -80,10 +80,17 @@ module.exports.capturaImagens = function(){
                 })
               }
             })
-            //alimentar matriz com as cores aqui
-            auxX = idx % 3
-            auxY = idx/3|0
-            representacaoCubo[faceSelecionada][auxX][auxY] = strToCor(cor)
+            //alimentar matriz com as cores aqui            
+            auxX = Math.floor(idx / 3)
+            idxY = idx;
+            if (idxY < 3)
+              auxY = idxY;
+            else {
+              while (idxY >= 3)
+                idxY -= 3;
+            }
+            auxY = idxY;
+            representacaoCubo[faceSelecionada][auxX][auxY] = strToCor(cor);
           }          
         })
         Cubo.gerarRepresentacaoCubo()

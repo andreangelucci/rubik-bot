@@ -14,9 +14,18 @@
     onkeydown="keyDown(event)"
     onload="onLoad()"
   >
-    <div class="container">
-      <div class="row">
+    <div class="container-fluid">      
+      <header class="row page-header">
+        <!-- cabecalho da tela -->
+        <img src="./resources/rubik-header.png" alt="cubo" id="iconeHeader">
         <div class="col">
+            <span id="spamTitulo">RUBIK_B0T</span>
+            <p>Robô para solução do Cubo Mágico</p>
+        </div>
+      </header>
+
+      <div role="main" class="row">      
+        <div class="col">          
             <!-- Espaco para a captura da webcam -->                        
             <video 
               id="videoElement"
@@ -43,7 +52,15 @@
           <div id='preview-cubo' class="container-fluid position-absolute"></div>
         </div>
       </div>
+
+      <footer class="row">
+        <div class="col">
+            <button type="button" class="btn btn-dark" id="btnConfirma">Confirmar</button>
+        </div>        
+      </footer>
     </div>
+        
+    
 
     <div class="modal fade" id="modalCores" tabindex="-1" role="dialog" aria-labelledby="labelTitulo" aria-hidden="true">
       <div class="modal-dialog" role="document">

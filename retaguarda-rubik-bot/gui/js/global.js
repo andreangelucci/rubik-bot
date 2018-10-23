@@ -15,7 +15,7 @@ function strToCor(corWatson){
         case 'verde': return verde
         case 'vermelho': return vermelho
         default:
-            throw 'Cor invalida!'
+            return indefinido;
     }
 }
 
