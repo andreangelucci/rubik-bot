@@ -19,7 +19,7 @@ function retornaObjFace(face){
 
 module.exports.realcarFaceSelecionada = function(realcar){
     retornaObjFace(faceSelecionada).style.backgroundColor = 
-        (realcar ? 'red' : 'white')
+        (realcar ? '#3ae178' : 'white')
 }
 
 function alteracaoManualPeca(pecaElement){
@@ -55,11 +55,19 @@ function alteracaoManualPeca(pecaElement){
         var modalCores = document.querySelector('#cores-escolher');
         swal({        
             content: modalCores,
+            closeOnClickOutside: false,
+            closeOnEsc: false,
             text: 'Selecione a nova cor para a peça:',
-            buttons: {confirm: 'Confirmar'}
+            buttons: {confirm: 'Confirmar'}            
         }).then((value) => {
             if (value){
-                console.log('blz.....');
+                $('.peca-escolher').each(function(){
+                    if($(this).attr('data-escolhido') == 's'){
+                        representacaoCubo[faceAlterar]
+                        [regexId[2][0]][regexId[2][1]] = $(this).attr('data-color');
+                        Cubo.gerarRepresentacaoCubo();
+                    }
+                });
             }
         });
         
@@ -138,11 +146,11 @@ module.exports.gerarRepresentacaoCubo = function(){
     atualizaQuadrante(faceSuperior, representacaoCubo[4])
     atualizaQuadrante(faceInferior, representacaoCubo[5])
 
-    try {        
-        this.resolverCuboAtual()
-    } catch(err){
-        alert(err)
-    }
+    // try {        
+    //     this.resolverCuboAtual()
+    // } catch(err){
+    //     alert(err)
+    // }
         
 }
 

@@ -115,3 +115,40 @@ function mostrarErro(err){
         }]
     });
 }
+
+function confirmacao(msg, callback){
+    swal({
+        text: msg,
+        icon: 'info',
+        buttons: [
+            {
+                text: "Não",
+                value: false, 
+                visible: true
+            }, 
+            {
+                text: "Sim", 
+                value: true,
+                visible: true
+            }
+        ]
+    }).then((value) => {
+        if (value){
+            callback();
+        }
+    });    
+}
+
+function mensagemAguarde(msg){
+    swal({
+        closeOnClickOutside: false,
+        closeOnEsc: false,
+        text: msg,
+        buttons: false,
+        icon: 'info'
+    });    
+}
+
+function fecharMensagemAguarde(){
+    swal.close();
+}

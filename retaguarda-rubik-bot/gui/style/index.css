@@ -41,7 +41,7 @@ footer {
     height: 80px;
 }
 
-.botao:hover {
+.botao:hover, .swal-button:hover {
     background-color: #4d8450;
 }
 
@@ -54,9 +54,21 @@ footer {
 }
 
 #btnLimpar {
-    margin-left: 600px;
+    /*margin-left: 600px;*/
 }
 
 #btnConfirmar {
-    margin-left: 800px;
+    /*margin-left: 800px;*/
+}
+
+.swal-button {
+    background-color: #3d5144;
+    color: white;
+}
+
+.buttom-group{
+    text-align: right;
+    margin: 0 20px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(190,190,190,1);
 }

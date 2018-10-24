@@ -1,9 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+
 #preview-cubo { 
     width: 400px;
     height: 300px;
 }
 
 .quadrante{
+    padding: 2px 0 10px 6px;
     width: 25%;
     height: 33.33%;
 }

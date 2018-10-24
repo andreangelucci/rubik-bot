@@ -38,6 +38,7 @@ module.exports.ativaCamera = function(link, pathImg, callback){
 
 module.exports.capturaImagens = function(){  
   //salva as fotos do cubo
+  mensagemAguarde('Analisando imagem, aguarde...');
   const watson = require('./watsonRecognize')
   canvasSnapshot.getContext('2d')
     .drawImage(video, 0, 0, 400, 300);
@@ -95,6 +96,7 @@ module.exports.capturaImagens = function(){
         })
         Cubo.gerarRepresentacaoCubo()
         SelecionarProximaFace();
+        fecharMensagemAguarde();
       })
     }
   )

@@ -11,6 +11,23 @@ function onLoad(){
     document.querySelector('#btnConfirma').addEventListener(
         'click', onClickConfirmar
     );
+
+    document.querySelector('#btnLimpar').addEventListener(
+        'click', onClickLimpar
+    );
+
+
+    $('.peca-escolher').click(function(){
+       
+        $(".img-check").remove();
+
+        var img = $('<img class="img-check">');
+        img.attr('src', './resources/check.png');
+        img.appendTo(this);
+        
+        $('.peca-escolher').attr('data-escolhido', 'n');
+        $(this).attr('data-escolhido', 's');
+    })
 }
 
 //funcao de cpatura da tela
@@ -23,29 +40,19 @@ function keyDown(btn){
 
 function onClickConfirmar(){
     //confirmacao do cubo        
-    swal({
-        text: `Tem certeza que deseja solucionar o Cubo Mágico?
+    confirmacao(
+        `Tem certeza que deseja solucionar o Cubo Mágico?
         \nCertifique-se que o Rubik Bot está conectado.`,
-        icon: 'info',
-        buttons: [
-            {
-                text: "Não",
-                value: false, 
-                visible: true
-            }, 
-            {
-                text: "Sim", 
-                value: true,
-                visible: true
-            }
-        ]
-    }).then((value) => {
-        if (value){
+        function(){
             try{
                 throw 'falha ao falhar';
             } catch(err){
                 mostrarErro(err);
             }             
         }
-    });    
+    );
+}
+
+function onClickLimpar(){
+    mensagemAguarde('Aguarde...');
 }
