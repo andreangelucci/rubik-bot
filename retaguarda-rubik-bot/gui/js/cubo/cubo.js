@@ -1,3 +1,5 @@
+var modalCores = document.querySelector('#cores-escolher');
+
 var containerCubo = document.querySelector("#preview-cubo");
 var faceSuperior = document.getElementById("q01");
 var faceEsquerda = document.getElementById("q10");
@@ -49,10 +51,21 @@ function alteracaoManualPeca(pecaElement){
                 break;
             default:
                 throw "Face selecionada nao encontrada."
-        }        
+        }    
 
-        //var telaEscolher = document.querySelector('#cores-escolher');  
-        var modalCores = document.querySelector('#cores-escolher');
+
+        //remove a imagem com o check
+        $(".img-check").remove();
+        //seleciona a cor atual da peca
+        $('.peca-escolher').each(function(){
+            console.log($(this).attr('data-color'))
+            if(
+                $(this).attr('data-color') == representacaoCubo[faceAlterar][regexId[2][0]][regexId[2][1]]
+            ){                
+                $(this).click();
+            }
+        });        
+        //chama o modal para escolher
         swal({        
             content: modalCores,
             closeOnClickOutside: false,
@@ -63,8 +76,8 @@ function alteracaoManualPeca(pecaElement){
             if (value){
                 $('.peca-escolher').each(function(){
                     if($(this).attr('data-escolhido') == 's'){
-                        representacaoCubo[faceAlterar]
-                        [regexId[2][0]][regexId[2][1]] = $(this).attr('data-color');
+                        representacaoCubo[faceAlterar][regexId[2][0]][regexId[2][1]] = 
+                            $(this).attr('data-color');
                         Cubo.gerarRepresentacaoCubo();
                     }
                 });
@@ -101,9 +114,6 @@ module.exports.criarEstruturaCubo = function(){
                         contPeca.addEventListener("dblclick", function(){
                             alteracaoManualPeca(this)
                         })
-                        // contPeca.ondblclick = function(){
-                        //     $("#modalCores").modal()
-                        // }
                         contPeca.style.backgroundColor = indefinido;
                         quadrante.appendChild(contPeca);
                     }

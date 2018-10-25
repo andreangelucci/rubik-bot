@@ -8,26 +8,19 @@ function onLoad(){
     Video.ativaCamera()
     Cubo.criarEstruturaCubo()
 
-    document.querySelector('#btnConfirma').addEventListener(
-        'click', onClickConfirmar
-    );
+    $('body').keydown(keyDown);
+    $('#btnConfirma').click(onClickConfirmar);
 
-    document.querySelector('#btnLimpar').addEventListener(
-        'click', onClickLimpar
-    );
+    $('#btnLimpar').click(onClickLimpar);
 
-
-    $('.peca-escolher').click(function(){
-       
+    $('.peca-escolher').click(function(){       
         $(".img-check").remove();
-
         var img = $('<img class="img-check">');
         img.attr('src', './resources/check.png');
-        img.appendTo(this);
-        
+        img.appendTo(this);        
         $('.peca-escolher').attr('data-escolhido', 'n');
         $(this).attr('data-escolhido', 's');
-    })
+    });
 }
 
 //funcao de cpatura da tela
