@@ -52,7 +52,8 @@ module.exports.capturaImagens = function(){
       'base64'
     )
     fs.writeFile('./imgs-cubo/p'+ i+ '.png', imgBuffer, function(err){
-      console.log('Falha ao salvar imagem: '+err)
+      if (err)
+        console.log('Falha ao salvar imagem: '+err)
     })
   }  
   var arqZipado = require('path').join(__dirname, '../../imgs-cubo/face_cubo.zip');

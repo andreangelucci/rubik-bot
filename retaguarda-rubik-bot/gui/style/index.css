@@ -46,6 +46,7 @@ footer {
 }
 
 .botao {
+    font-size: 16px;
     background-color: #3d5144;
     color: white;
     width: 150px;
@@ -53,22 +54,18 @@ footer {
     top: 15px;
 }
 
-#btnLimpar {
-    /*margin-left: 600px;*/
-}
-
-#btnConfirmar {
-    /*margin-left: 800px;*/
-}
-
 .swal-button {
     background-color: #3d5144;
     color: white;
 }
 
-.buttom-group{
+.buttom-group {    
     text-align: right;
     margin: 0 20px;
     padding-top: 24px;
     border-top: 1px solid rgba(190,190,190,1);
+}
+
+.swal-text {
+    font-size: 15px;
 }

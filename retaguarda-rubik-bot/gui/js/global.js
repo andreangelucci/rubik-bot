@@ -30,7 +30,7 @@ Face = {
     inferior: 5
 }
 
-var faceSelecionada = Face.frente
+var faceSelecionada = Face.frente;
 
 function SelecionarProximaFace(){
     SetFaceSelecionada((faceSelecionada == 5 ? 0 : faceSelecionada + 1))
@@ -42,44 +42,51 @@ function SetFaceSelecionada(face){
     Cubo.realcarFaceSelecionada(true)
 }
 
-const representacaoCubo = [
-    //frente
+var representacaoCubo;
+
+function reiniciaCubo(){    
+    representacaoCubo = 
     [
-        [indefinido, indefinido, indefinido],
-        [indefinido, indefinido, indefinido],
-        [indefinido, indefinido, indefinido]
-    ],
-    //direita
-    [
-        [indefinido, indefinido, indefinido],
-        [indefinido, indefinido, indefinido],
-        [indefinido, indefinido, indefinido]
-    ],
-    //costas
-    [
-        [indefinido, indefinido, indefinido],
-        [indefinido, indefinido, indefinido],
-        [indefinido, indefinido, indefinido]
-    ],
-    //esquerda
-    [
-        [indefinido, indefinido, indefinido],
-        [indefinido, indefinido, indefinido],
-        [indefinido, indefinido, indefinido]
-    ],
-    //cima
-    [
-        [indefinido, indefinido, indefinido],
-        [indefinido, indefinido, indefinido],
-        [indefinido, indefinido, indefinido]
-    ],
-    //baixo
-    [
-        [indefinido, indefinido, indefinido],
-        [indefinido, indefinido, indefinido],
-        [indefinido, indefinido, indefinido]
-    ]
-]
+        //frente
+        [
+            [indefinido, indefinido, indefinido],
+            [indefinido, indefinido, indefinido],
+            [indefinido, indefinido, indefinido]
+        ],
+        //direita
+        [
+            [indefinido, indefinido, indefinido],
+            [indefinido, indefinido, indefinido],
+            [indefinido, indefinido, indefinido]
+        ],
+        //costas
+        [
+            [indefinido, indefinido, indefinido],
+            [indefinido, indefinido, indefinido],
+            [indefinido, indefinido, indefinido]
+        ],
+        //esquerda
+        [
+            [indefinido, indefinido, indefinido],
+            [indefinido, indefinido, indefinido],
+            [indefinido, indefinido, indefinido]
+        ],
+        //cima
+        [
+            [indefinido, indefinido, indefinido],
+            [indefinido, indefinido, indefinido],
+            [indefinido, indefinido, indefinido]
+        ],
+        //baixo
+        [
+            [indefinido, indefinido, indefinido],
+            [indefinido, indefinido, indefinido],
+            [indefinido, indefinido, indefinido]
+        ]
+    ];
+}
+
+reiniciaCubo();
 
 function retornaArrayCubo(face){
     switch(face){

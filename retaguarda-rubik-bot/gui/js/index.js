@@ -26,7 +26,11 @@ function onLoad(){
 //funcao de cpatura da tela
 function keyDown(btn){
     const teclaEspaco = 32
-    if (btn.keyCode == teclaEspaco){
+    if (
+        (btn.keyCode == teclaEspaco) &&
+        !(swal.getState().isOpen) //nenhum modal aberto
+    ){
+        console.log(swal.getState())
         Video.capturaImagens();
     }
 }
@@ -47,5 +51,12 @@ function onClickConfirmar(){
 }
 
 function onClickLimpar(){
-    mensagemAguarde('Aguarde...');
+    confirmacao(
+        'Tem certeza que deseja limpar as informações do Cubo Mágico?',
+        function(){
+            reiniciaCubo();
+            Cubo.gerarRepresentacaoCubo();
+            SetFaceSelecionada(Face.frente);
+        }
+    )
 }

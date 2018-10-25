@@ -58,7 +58,7 @@ function alteracaoManualPeca(pecaElement){
         $(".img-check").remove();
         //seleciona a cor atual da peca
         $('.peca-escolher').each(function(){
-            console.log($(this).attr('data-color'))
+            $(this).attr('data-escolhido', 'n');
             if(
                 $(this).attr('data-color') == representacaoCubo[faceAlterar][regexId[2][0]][regexId[2][1]]
             ){                
@@ -83,15 +83,6 @@ function alteracaoManualPeca(pecaElement){
                 });
             }
         });
-        
-        // alert(
-        //     representacaoCubo[faceAlterar]
-        //     [regexId[2][0]][regexId[2][1]]
-        // )
-
-        console.log('continuei... ')
-        var qdt = regexId[1]
-        var pc = regexId[2]        
     }
 
 }
