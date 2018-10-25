@@ -27,13 +27,24 @@
     width: 60px;
 }
 
+#iconeHelp {
+    margin-left: 50px;
+    height: 50px;
+    width: 50px;
+}
+
 #spamTitulo {
     font-size: 30px;
 }
 
 div[role="main"] {
     margin: 20px;
-    height: 430px;
+    height: 330px;
+}
+
+div[role="help"] {
+    font-size: 12px;
+    height: 100px;
 }
 
 footer {
