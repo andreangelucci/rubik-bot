@@ -3,6 +3,7 @@
 #include <Motor/Motor.h>
 #include <Motor/ControladorMotores.h>
 #include <constantes.h>
+#include <regex>
 
 using namespace std;
 using namespace constantes;
@@ -20,6 +21,20 @@ ControladorMotor::ControladorMotor(){
 }
 
 void ControladorMotor::executarMovimentos(char sequencia){
+    //Recebe uma string com os movimentos
+    //Padrao: U L' F' B' D F' L U F' B' L B' U D2 F2 L2 U R2 F2 R2 U2 D
+    //U: Cima
+    //L: Esquerca
+    //F: Frente
+    //R: Direita
+    //D: Baixo
+    //B: Costas
+    //': Antihorario
+    //2: Movimento duplo
+    std::regex movs("(F|R|B|L|U|D)(\'?)(2?)");
+    std::smatch m;
+    std::regex_search(sequencia, m, movs);
+    
     switch (sequencia){
         case '1':
             mFrente.girar(horario, 1);

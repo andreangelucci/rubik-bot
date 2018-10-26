@@ -14,7 +14,7 @@ class ControladorMotor
 {
     public:
         ControladorMotor();
-        void executarMovimentos(char sequencia);
+        void executarMovimentos(std::string sequencia);
 };
 
 #endif
