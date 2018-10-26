@@ -6,7 +6,6 @@ exports.resolverCubo = function(defString, callback){
         pythonPath: "/usr/bin/python2.7",
         args: [defString]
     }
-    // let zipPython = new PythonShell('zip_arquivos.py', options)
     PythonShell.run('algKociemba.py', options, function(err){
         if (err)
             callback(err);

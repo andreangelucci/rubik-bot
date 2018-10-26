@@ -21,7 +21,7 @@ function strToCor(corWatson){
     }
 }
 
-Face = {
+var Face = {
     frente: 0,
     direita: 1,
     costas: 2,
@@ -113,8 +113,10 @@ function defineFace(face, arr){
 }
 
 function mostrarErro(err){
+    //tira aspas da msg se existir
+    err = String(err).replace(/'/g, "\'");
     swal({
-        title: 'ops...',
+        title: 'Ops...',
         text: err,
         icon: 'error',
         buttons: [{
@@ -124,6 +126,8 @@ function mostrarErro(err){
 }
 
 function confirmacao(msg, callback){
+    //tira aspas da msg se existir
+    msg = String(msg).replace(/'/g, "\'");
     swal({
         text: msg,
         icon: 'info',
@@ -147,6 +151,8 @@ function confirmacao(msg, callback){
 }
 
 function mensagemAguarde(msg){
+    //tira aspas da msg se existir
+    msg = String(msg).replace(/'/g, "\'");
     swal({
         closeOnClickOutside: false,
         closeOnEsc: false,
@@ -156,6 +162,17 @@ function mensagemAguarde(msg){
     });    
 }
 
+function mensagemSucesso(msg){
+    //tira aspas da msg se existir
+    msg = String(msg).replace(/'/g, "\'");
+    console.log(msg)
+    swal({
+        title: 'Sucesso!',
+        text: msg,
+        button: 'Ok',
+        icon: 'success'
+    });    
+}
 function fecharMensagemAguarde(){
     swal.close();
 }

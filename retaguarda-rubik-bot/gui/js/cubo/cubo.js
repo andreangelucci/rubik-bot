@@ -145,78 +145,95 @@ module.exports.gerarRepresentacaoCubo = function(){
     atualizaQuadrante(faceCosta, representacaoCubo[2])
     atualizaQuadrante(faceEsquerda, representacaoCubo[3])
     atualizaQuadrante(faceSuperior, representacaoCubo[4])
-    atualizaQuadrante(faceInferior, representacaoCubo[5])
-
-    // try {        
-    //     this.resolverCuboAtual()
-    // } catch(err){
-    //     alert(err)
-    // }
-        
+    atualizaQuadrante(faceInferior, representacaoCubo[5])        
 }
 
-module.exports.resolverCuboAtual = function(){
-    //gera uma string com o posicionamento atual do cubo
-    //e envia para o algoritmo de Kociemba
-    //padrao: UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB
-    //identifica a cor dos centros de face:
-
-    require('../../linker/algKociemba').resolverCubo(
-        'FUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB',
-        function(err, resultado){
-            if (err)
-                alert(err)
-            else    
-                alert(resultado)
-        }
-    )
-
-    try{
-        
-    } catch(e){
-        alert(e)
-    }    
-
-    var corS = representacaoCubo[Face.superior][1][1]
-    var corF = representacaoCubo[Face.frente][1][1]
-    var corD = representacaoCubo[Face.direita][1][1]
-    var corE = representacaoCubo[Face.esquerda][1][1]
-    var corC = representacaoCubo[Face.costas][1][1]
-    var corI = representacaoCubo[Face.inferior][1][1]
-
-    var definitionString
-
+function cuboEhValido(){
+    //veririca se nao existe nenhuma peca invalida
     for (f in Face){
-        let s
         let fAnalise = representacaoCubo[Face[f]]
         for (i = 0; i < 3; i++){
             for (j = 0; j < 3; j++){
-                switch (fAnalise[i][j]){
-                    case corS:
-                        s = 'U'
-                        break
-                    case corF:
-                        s = 'F'
-                        break
-                    case corD: 
-                        s = 'R'
-                        break
-                    case corE:
-                        s = 'L'
-                        break
-                    case corC:
-                        s = 'B'
-                        break
-                    case corI:
-                        s = 'L'
-                        break
-                    default:
-                        console.log(fAnalise[i][j])
-                        throw "Existem peças invalidas no cubo."                        
-                }
+                if (fAnalise[i][j] == indefinido)
+                    return false;
             }
         }
-        definitionString =+ s
     }
-    console.log(definitionString)
+    return true;
 }
+
+module.exports.resolverCuboAtual = function(){
+    return new Promise(
+        function(resolve, reject){
+        //gera uma string com o posicionamento atual do cubo
+        //e envia para o algoritmo de Kociemba
+        //padrao: UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB
+        //identifica a cor dos centros de face:
+    
+        if (!cuboEhValido())
+            throw 'Cubo inválido, verifique.';        
+        
+        var corS = representacaoCubo[Face.superior][1][1]
+        var corF = representacaoCubo[Face.frente][1][1]
+        var corD = representacaoCubo[Face.direita][1][1]
+        var corE = representacaoCubo[Face.esquerda][1][1]
+        var corC = representacaoCubo[Face.costas][1][1]
+        var corI = representacaoCubo[Face.inferior][1][1]
+
+        var definitionString = '';        
+        
+        [
+            //ordem do algoritmo
+            Face.superior,
+            Face.direita,
+            Face.frente,            
+            Face.inferior,
+            Face.esquerda,
+            Face.costas
+        ].forEach((f) => {
+            console.log(f)
+            let s
+            let fAnalise = representacaoCubo[f]
+            for (i = 0; i < 3; i++){
+                for (j = 0; j < 3; j++){
+                    switch (fAnalise[i][j]){
+                        case corS:
+                            s = 'U'
+                            break
+                        case corF:
+                            s = 'F'
+                            break
+                        case corD: 
+                            s = 'R'
+                            break
+                        case corE:
+                            s = 'L'
+                            break
+                        case corC:
+                            s = 'B'
+                            break
+                        case corI:
+                            s = 'D'
+                            break
+                        default:
+                            throw 'Existem peças centrais com a mesma cor.';
+                    }
+                    definitionString += s
+                }                
+            }                    
+        });
+
+        //definitionString = 'LBLRULUBRLBLLRFUULFUFLFRBRFUFRFLLBRBLBLFLLUURBLFLBLRUR';
+        //definicao encontrada, envia para o algoritmo de kociemba
+        require('../../linker/algKociemba').resolverCubo(
+            definitionString,
+            function(err, resultado){
+                if (err)
+                    reject(err);
+                else    
+                    resolve(resultado);
+            }
+        )        
+      }        
+    )
+};

@@ -13,3 +13,6 @@ def resolver(defString):
 if (sys.argv[1] == None):
     raise Exception("Dados do cubo nao informado")
 resolver(sys.argv[1])
+
+
+# U L' F' B' D F' L U F' B' L B' U D2 F2 L2 U R2 F2 R2 U2 D

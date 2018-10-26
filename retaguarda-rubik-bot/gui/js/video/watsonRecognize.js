@@ -157,6 +157,8 @@ module.exports.detectarCor = function(imgPath, classificador, callback){
     //     `
     //   )
     // )
+    
+    
     var img = fs.createReadStream(imgPath);
     var classificador = [classificador];
     var porcentagem_minima = 0.6;

@@ -41,11 +41,14 @@ function onClickConfirmar(){
         `Tem certeza que deseja solucionar o Cubo Mágico?
         \nCertifique-se que o Rubik Bot está conectado.`,
         function(){
-            try{
-                throw 'falha ao falhar';
-            } catch(err){
-                mostrarErro(err);
-            }             
+            Cubo.resolverCuboAtual()                
+                .then((solucao) => {                    
+                    //chamar aqui a execucao do rubik bot
+                    mensagemSucesso(msg);
+                })
+                .catch((err) => {
+                    mostrarErro(err);
+                })
         }
     );
 }
