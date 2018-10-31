@@ -5,3 +5,4 @@ retaguarda-rubik-bot/gui/node_modules/
 retaguarda-rubik-bot/gui/imgs-cubo/
 uteis/
 .env
+*.log
