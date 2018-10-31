@@ -1,3 +1,4 @@
+require('dotenv').load();
 var Video
 var Cubo
 var fs = require('fs')
@@ -43,8 +44,11 @@ function onClickConfirmar(){
         function(){
             Cubo.resolverCuboAtual()                
                 .then((solucao) => {                    
-                    //chamar aqui a execucao do rubik bot
-                    mensagemSucesso(msg);
+                    //envia a solucao para o cubo de rubik
+                    require('./linker/mensagemSerial').enviarSerial(solucao)
+                        .catch((err) => {
+                            mostrarErro(err);
+                        });
                 })
                 .catch((err) => {
                     mostrarErro(err);
