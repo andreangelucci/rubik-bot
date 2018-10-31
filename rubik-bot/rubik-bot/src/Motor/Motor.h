@@ -1,6 +1,7 @@
 #ifndef Motor_h
 #define Motor_h
 
+enum MotorFace {frente, direita, costas, esquerda, cima, baixo};
 enum Sentido {horario, antihorario};
 
 class Motor

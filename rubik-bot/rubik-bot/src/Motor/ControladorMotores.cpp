@@ -3,9 +3,7 @@
 #include <Motor/Motor.h>
 #include <Motor/ControladorMotores.h>
 #include <constantes.h>
-#include <regex>
 
-using namespace std;
 using namespace constantes;
 
 Motor mFrente(PIN_ENABLED_MF);
@@ -20,41 +18,63 @@ ControladorMotor::ControladorMotor(){
     pinMode(PIN_PASSOS, OUTPUT);
 }
 
-void ControladorMotor::executarMovimentos(char sequencia){
+void ControladorMotor::executarMovimentos(String sequencia){
     //Recebe uma string com os movimentos
     //Padrao: U L' F' B' D F' L U F' B' L B' U D2 F2 L2 U R2 F2 R2 U2 D
     //U: Cima
-    //L: Esquerca
+    //L: Esquerda
     //F: Frente
     //R: Direita
     //D: Baixo
     //B: Costas
     //': Antihorario
     //2: Movimento duplo
-    std::regex movs("(F|R|B|L|U|D)(\'?)(2?)");
-    std::smatch m;
-    std::regex_search(sequencia, m, movs);
-    
-    switch (sequencia){
-        case '1':
-            mFrente.girar(horario, 1);
-            break;
-        case '2':
-            mDireita.girar(horario, 1);
-            break;
-        case '3':
-            mCosta.girar(horario, 1);
-            break;
-        case '4':
-            mEsquerda.girar(horario, 1);
-            break;   
-        case '5':
-            mSuperior.girar(horario, 1);
-            break;     
-        case '6':
-            mInferior.girar(horario, 1);
-            break;                                             
-        default:
-            Serial.println("Opcao invalida");
-    }
+    Serial.println(sequencia);
+    Movimento movCorrente;
+    for (int i = 0; i < sequencia.length(); i++){
+        if (
+            (sequencia[i] == *"F") ||
+            (sequencia[i] == *"R") ||
+            (sequencia[i] == *"B") ||
+            (sequencia[i] == *"L") ||
+            (sequencia[i] == *"U") ||
+            (sequencia[i] == *"D")
+        ){
+            movCorrente.duplo = false;
+            movCorrente.sentido = horario;
+            switch (sequencia[i]){
+                case 'F':
+                    movCorrente.motor = &mFrente;
+                    break;
+                case 'R':
+                    movCorrente.motor = &mDireita;
+                    break;
+                case 'B':
+                    movCorrente.motor = &mCosta;
+                    break;
+                case 'L':
+                    movCorrente.motor = &mEsquerda;
+                    break;
+                case 'U':
+                    movCorrente.motor = &mSuperior;
+                    break;
+                case 'D':
+                    movCorrente.motor = &mInferior;
+                    break;
+            }
+        } else
+            if (sequencia[i] == *"'"){
+                movCorrente.sentido = antihorario;
+            } else
+                if (sequencia[i] == *"2"){
+                    movCorrente.duplo = true;
+                }
+        if ((sequencia[i] == *" ")||(i == sequencia.length() - 1)){
+            //executa o movimento
+            movCorrente.motor->girar(
+                movCorrente.sentido, 
+                (movCorrente.duplo) ? 2 : 1
+            );
+        }
+    }                    
 }

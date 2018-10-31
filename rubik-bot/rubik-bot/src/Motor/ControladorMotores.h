@@ -1,5 +1,6 @@
 #ifndef ControladorMotor_h
 #define ControladorMotor_h
+#include <string>
 
 #define PIN_ENABLED_MF 17
 #define PIN_ENABLED_MD 18
@@ -8,13 +9,17 @@
 #define PIN_ENABLED_MS 22
 #define PIN_ENABLED_MI 23
 
-using namespace std;
+struct Movimento {
+    Motor * motor;
+    Sentido sentido;
+    bool duplo;
+};
 
 class ControladorMotor
 {
     public:
         ControladorMotor();
-        void executarMovimentos(std::string sequencia);
+        void executarMovimentos(String sequencia);
 };
 
 #endif

@@ -3,6 +3,7 @@
 #include <Motor/Motor.h>
 #include <Motor/ControladorMotores.h>
 #include <constantes.h>
+#include <string>
 
 using namespace constantes;
 
@@ -29,25 +30,13 @@ void loop() {
         //da porta serial
         if (!_trabalhando){
             setTrabalhando(true);
-            char msg = Serial.read();
-            controlador.executarMovimentos(msg);
+            //std::string msg ();
+            controlador.executarMovimentos(
+                Serial.readStringUntil('\r\n')
+            );
             setTrabalhando(false);
         } else {
             Serial.println("Espera, to trabalhando...");
         }
-    }
-    // Serial.println("Uma volta horario");
-    // m1.girar(horario, 2);
-    // delay(1000);
-    // Serial.println("Duas volta ant-horario");
-    // m1.girar(antihorario, 2);
-    // delay(1000);
-
-
-    // Serial.println("Uma volta horario");
-    // m2.girar(horario, 2);
-    // delay(1000);
-    // Serial.println("Duas volta ant-horario");
-    // m2.girar(antihorario, 2);
-    // delay(1000);
+    }        
 }
