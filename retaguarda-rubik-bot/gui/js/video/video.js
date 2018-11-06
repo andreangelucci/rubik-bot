@@ -36,6 +36,19 @@ module.exports.ativaCamera = function(link, pathImg, callback){
   }
 }
 
+function defineCorAnalisePeca(idx, cor){
+  auxX = Math.floor(idx / 3)
+  idxY = idx;
+  if (idxY < 3)
+    auxY = idxY;
+  else {
+    while (idxY >= 3)
+      idxY -= 3;
+  }
+  auxY = idxY;
+  representacaoCubo[faceSelecionada][auxX][auxY] = strToCor(cor);
+}
+
 module.exports.capturaImagens = function(){  
   //salva as fotos do cubo
   mensagemAguarde('Analisando imagem, aguarde...');
@@ -61,7 +74,9 @@ module.exports.capturaImagens = function(){
     arqZipado, function(){
       //zipou com sucesso, envia ao watson
       const classificadorCores = 'DefaultCustomModel_527294892'
-      watson.detectarCor(arqZipado, classificadorCores, function(analise){
+      watson.detectarCor(arqZipado, classificadorCores,
+        //callback de sucesso
+        (analise) => {
         //cores detectadas, trabalha a resposta        
         analise.images.forEach(img => {
           var cor = ''
@@ -83,19 +98,31 @@ module.exports.capturaImagens = function(){
               }
             })
             //alimentar matriz com as cores aqui            
-            auxX = Math.floor(idx / 3)
-            idxY = idx;
-            if (idxY < 3)
-              auxY = idxY;
-            else {
-              while (idxY >= 3)
-                idxY -= 3;
-            }
-            auxY = idxY;
-            representacaoCubo[faceSelecionada][auxX][auxY] = strToCor(cor);
+            defineCorAnalisePeca(idx, cor);            
           }          
         })
         Cubo.gerarRepresentacaoCubo()
+        SelecionarProximaFace();
+        fecharMensagemAguarde();
+      },
+      //Callback de erro, executa a analise de contingencia
+      (err) => {
+        console.log('Falha ao consultar as cores com o Watson: '+ err);
+        //consulta as cores com o script python
+      
+        //NAO FUNCIONA
+        //como a funcao eh assincrona, nao respeita o valor de i
+        for (i = 0; i <= 8; i++){
+          require('../../linker/analise_cores_contingencia').analisaCor(
+            './imgs-cubo/p'+ i+ '.png'
+          ).then((cor) => {
+            //alimentar matriz com as cores aqui            
+            console.log("to tentando... "+ cor+ ": "+ i);
+            defineCorAnalisePeca(i, cor);
+          })
+        }        
+        
+        Cubo.gerarRepresentacaoCubo();
         SelecionarProximaFace();
         fecharMensagemAguarde();
       })

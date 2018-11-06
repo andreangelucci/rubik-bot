@@ -9,7 +9,7 @@ const watsonRecognition = new VisualRecognitionV3({
   iam_apikey: process.env.WATSON_API_KEY
 });
 
-module.exports.detectarCor = function(imgPath, classificador, callback){    
+module.exports.detectarCor = function(imgPath, classificador, callback, callback_erro){    
     // callback(
     //   JSON.parse(
     //     `
@@ -169,10 +169,9 @@ module.exports.detectarCor = function(imgPath, classificador, callback){
     };
     watsonRecognition.classify(
       parametros, function(err, response){
-        if (err)
-          console.log(err)
-        else {
-          console.log(JSON.stringify(response, null, 2));
+        if (err){
+          callback_erro(err);
+        } else {
           callback(response)          
         }
       }

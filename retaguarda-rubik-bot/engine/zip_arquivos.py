@@ -12,6 +12,10 @@ if (os.path.isfile(path)):
 diretorio = os.path.dirname(path)
 arq_zipado = zipfile.ZipFile(path, 'w')
 for i in range(0, 9):
+    #ignora a 4 peca (peca central)
+    #pois foi removida do cubo para encaixar o bot
+    if (i == 4):
+        continue
     arq_img = os.path.join(diretorio, 'p{}.png'.format(i))    
     if not(os.path.exists(arq_img)):
         raise Exception('Arquivo {} nao existe.'.format(arq_img))
