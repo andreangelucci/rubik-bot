@@ -2,12 +2,12 @@
 #define ControladorMotor_h
 #include <string>
 
-#define PIN_ENABLED_MF 17
-#define PIN_ENABLED_MD 18
-#define PIN_ENABLED_MC 19
-#define PIN_ENABLED_ME 21
+#define PIN_ENABLED_MC 17
+#define PIN_ENABLED_MI 18
+#define PIN_ENABLED_ME 19
+#define PIN_ENABLED_MD 21
 #define PIN_ENABLED_MS 22
-#define PIN_ENABLED_MI 23
+#define PIN_ENABLED_MF 23
 
 struct Movimento {
     Motor * motor;

@@ -71,6 +71,14 @@ void ControladorMotor::executarMovimentos(String sequencia){
                 }
         if ((sequencia[i] == *" ")||(i == sequencia.length() - 1)){
             //executa o movimento
+            
+            //Inverte o sentido nos motores frontal e traseiro
+            if (
+                (movCorrente.motor == &mFrente) ||
+                (movCorrente.motor == &mCosta)
+            ){
+                movCorrente.sentido = (movCorrente.sentido == antihorario) ? horario : antihorario;
+            }
             movCorrente.motor->girar(
                 movCorrente.sentido, 
                 (movCorrente.duplo) ? 2 : 1

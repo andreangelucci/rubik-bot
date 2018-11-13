@@ -28,14 +28,14 @@ void Motor::_setHabilitado(bool value){
 void Motor::girar(Sentido s, int voltas){        
     _definirSentido(s);
     _setHabilitado(true);    
-    delay(500);
+    delay(150);
     //total de passos = 200 por rotacao
-    int passos = voltas * 50;
+    int passos = (voltas * 50) + 3;
     for (int x = 0; x < passos; x++){
       digitalWrite(PIN_PASSOS, HIGH);
-      delay(3.25);
+      delay(7);
       digitalWrite(PIN_PASSOS, LOW);
-      delay(3.25);
+      delay(7);
     }
     _setHabilitado(false);
 }
