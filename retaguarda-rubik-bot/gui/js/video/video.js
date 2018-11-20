@@ -116,8 +116,7 @@ module.exports.capturaImagens = function(){
           require('../../linker/analise_cores_contingencia').analisaCor(
             './imgs-cubo/p'+ i+ '.png'
           ).then((cor) => {
-            //alimentar matriz com as cores aqui            
-            console.log("to tentando... "+ cor+ ": "+ i);
+            //alimentar matriz com as cores aqui         
             defineCorAnalisePeca(i, cor);
           })
         }        

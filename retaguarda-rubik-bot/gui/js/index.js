@@ -31,7 +31,6 @@ function keyDown(btn){
         (btn.keyCode == teclaEspaco) &&
         !(swal.getState().isOpen) //nenhum modal aberto
     ){
-        console.log(swal.getState())
         Video.capturaImagens();
     }
 }
@@ -40,7 +39,7 @@ function onClickConfirmar(){
     //confirmacao do cubo        
     confirmacao(
         `Tem certeza que deseja solucionar o Cubo Mágico?
-        \nCertifique-se que o Rubik Bot está conectado.`,
+        Certifique-se que o Rubik Bot está conectado.`,
         function(){
             Cubo.resolverCuboAtual()                
                 .then((solucao) => {                    
