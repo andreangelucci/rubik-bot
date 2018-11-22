@@ -32,6 +32,7 @@ void ControladorMotor::executarMovimentos(String sequencia){
     Serial.println(sequencia);
     Movimento movCorrente;
     for (int i = 0; i < sequencia.length(); i++){
+        //VERIFICAR AQUI QUAL COMANDO ESTA CHEGANDO!!!
         if (
             (sequencia[i] == *"F") ||
             (sequencia[i] == *"R") ||
@@ -75,7 +76,8 @@ void ControladorMotor::executarMovimentos(String sequencia){
             //Inverte o sentido nos motores frontal e traseiro
             if (
                 (movCorrente.motor == &mFrente) ||
-                (movCorrente.motor == &mCosta)
+                (movCorrente.motor == &mCosta) ||
+                (movCorrente.motor == &mInferior)
             ){
                 movCorrente.sentido = (movCorrente.sentido == antihorario) ? horario : antihorario;
             }

@@ -30,12 +30,12 @@ void Motor::girar(Sentido s, int voltas){
     _setHabilitado(true);    
     delay(150);
     //total de passos = 200 por rotacao
-    int passos = (voltas * 50) + 3;
+    int passos = (voltas * 50) + 2;
     for (int x = 0; x < passos; x++){
       digitalWrite(PIN_PASSOS, HIGH);
-      delay(7);
+      delay(5);
       digitalWrite(PIN_PASSOS, LOW);
-      delay(7);
+      delay(5);
     }
     _setHabilitado(false);
 }

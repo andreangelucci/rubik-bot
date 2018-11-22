@@ -30,10 +30,8 @@ void loop() {
         //da porta serial
         if (!_trabalhando){
             setTrabalhando(true);
-            //std::string msg ();
-            controlador.executarMovimentos(
-                Serial.readStringUntil('\r\n')
-            );
+            String movs = Serial.readStringUntil('\r\n');
+            controlador.executarMovimentos(movs);
             setTrabalhando(false);
         } else {
             Serial.println("Espera, to trabalhando...");
