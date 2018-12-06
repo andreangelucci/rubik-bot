@@ -7,10 +7,15 @@
 		<title>Rubik's Bot</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/blood.css">
+        <link rel="stylesheet" href="css/theme/blood.css">
+        <link rel="stylesheet" href="lightbox2-master/src/css/lightbox.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="apresentacao.css">
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <script src="jquery-3.3.1.min.js"></script>
+        <script src="lightbox2-master/src/js/lightbox.js"></script>
 
         <script src="./cronometro.js"></script>
 		<!-- Printing and PDF exports -->
@@ -19,7 +24,12 @@
 			link.rel = 'stylesheet';
 			link.type = 'text/css';
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+            lightbox.option({
+                'resizeDuration': 600,
+                'wrapAround': false,
+                'showImageNumberLabel': false
+            })
 		</script>
 	</head>
 	<body>
@@ -29,7 +39,9 @@
                     Introducao
                     Resumo sobre os dados do projeto
                 -->
-				<section data-background-image="./resource/cubo.gif">
+                <section 
+                    data-background-image="./resource/cubo.gif"
+                >
                     <h3>Robótica aplicada na solução do Cubo Mágico</h3>
                     <p><small>André Angeluci - Engenharia de Computação</small></p>
                 </section>
@@ -57,48 +69,62 @@
                         <h3>Contribuição dos jogos na cognição humana</h3>
                         <small>Vantagens no uso de recursos lúdicos no ensino</small>                        
                     </section>
-                    <!-- 
-                        Reconhecimento de cores com watson e OpenCV
-                     -->
-                    <section
-                        data-background-image=""
-                    ></section>
                     <section
                         data-background-image="./resource/cubo.jpeg"
                         data-state="transparente"    
                     >
                         <h3>O projeto</h3>
-                        <small>Desenvolvimento do Rubik's Bot</small>
-                    </section>                    
-                    <section
-                        data-background-image="./resource/opencv.png"
-                        data-state="transparente"
-                    >
-                        <h3>Processamento de imagens</h3>
-                        <small>Fundamentos e aplicação no projeto com Python e OpenCV</small>
-                    </section>
-                    <section
-                        data-background-image="./resource/cubo.jpg"
-                        data-state="transparente"
-                    >
-                        <h3>Algoritmo de solução</h3>
-                        <small>Abstração computacional do cubo e implementação do algoritmo de Kociemba</small>
-                    </section>
+                        <small><b>Desenvolvimento do Rubik's Bot</b></small>
+                        <p>
+                            <small class="fragment">                                
+                                Reconhecimento de cores com IBM Watson e OpenCV
+                            </small>
+                        </p>
+                        <p>
+                            <small class="fragment">                                
+                                Solução do Cubo-Mágico através do algoritmo de Kociemba
+                            </small>
+                        </p>
+                        <p>
+                            <small class="fragment">                                
+                                Aplicação da robótica para a solução mecânica
+                            </small>
+                        </p>
+                    </section>                                        
                 </section>
-                <section><h2>Demonstração</h2></section>
+                <section>
+                        <h4>Imagens do projeto</h4>
+                        <a href="resource/frente.png" data-lightbox="roadtrip">
+                            <img class="foto" src="resource/frente.png"/>
+                        </a>
+                        <a href="resource/frente2.jpg" data-lightbox="roadtrip">
+                            <img class="foto" src="resource/frente2.jpg"/>
+                        </a>
+                        <a href="resource/interior.jpg" data-lightbox="roadtrip">
+                            <img class="foto" src="resource/interior.jpg"/>
+                        </a>
+                        <a href="resource/superior.jpg" data-lightbox="roadtrip">
+                            <img class="foto" src="resource/superior.jpg"/>
+                        </a>
+                </section>
+                <section>
+                    <h2>Demonstração</h2>
+                </section>
                 <!-- 
                     Cronometro para medir o tempo de montagem
                  -->
                 <section
-                    id="sessaoCronometro"
                     onclick="onClickCronometro()"
-                    data-background-color=transparent
+                    data-background-color=#FF0000
                 >
-                    <h1 id="cronometro" style="color:#FFFFFF">00:000</h1>
+                    <h1 id="cronometro">00:000</h1>
                     <h6 id="mensagemCronometro"></h6>
                 </section>
-                <section >
-                    <h3>Dúvidas?</h3>
+                <section 
+                    data-background-image="./resource/demo.gif"
+                    data-state="transparente"
+                >
+                    <h2 id="lbl-duvidas">Obrigado</h2>
                 </section>
 			</div>
 		</div>
