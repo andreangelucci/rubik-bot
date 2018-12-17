@@ -3,6 +3,13 @@
     height: 260px;
 }
 
-#lbl-duvidas{
-    /* background-color: #a23; */
+mark{
+    background-color: #a23;    
+    font-style: oblique;
+    color: #FFFFFF;
+    font-size: 1.55em !important;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-shadow: 2px 2px 2px #222;
+    font-weight: 700;
 }
